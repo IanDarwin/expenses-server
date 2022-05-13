@@ -22,7 +22,6 @@ public class ExpenseListWrapper implements Serializable {
 
     /**
      * Return the list. Again, the stupid name is mandated by the structure of the old app.
-     * XXX FIXME use a Jackson annotation to solve that hideous name
      * @return The list of Expense items
      */
     @JsonProperty("expense")
