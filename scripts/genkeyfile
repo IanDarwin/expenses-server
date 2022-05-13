@@ -1,4 +1,11 @@
-keytool -genkeypair -alias expenses-server -keyalg RSA -keysize 4096 -storetype PKCS12 -keystore src/main/resources/springboot.p12 -validity 36500 -storepass nsaKnowsYourSecrets <<!
+keytool -genkeypair \
+	-alias expenses-server \
+	-keyalg RSA \
+	-keysize 4096 \
+	-storetype PKCS12 \
+	-keystore src/main/resources/springboot.p12 \
+	-validity 36500 \
+	-storepass nsaKnowsYourSecrets <<!
 Expenses Server
 IT
 Learning Tree
