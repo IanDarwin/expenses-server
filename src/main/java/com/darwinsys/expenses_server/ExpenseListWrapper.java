@@ -1,5 +1,7 @@
 package com.darwinsys.expenses_server;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,7 +25,8 @@ public class ExpenseListWrapper implements Serializable {
      * XXX FIXME use a Jackson annotation to solve that hideous name
      * @return The list of Expense items
      */
-    public List<Expense> getExpense() {
+    @JsonProperty("expense")
+    public List<Expense> getExpensesList() {
         return expense;
     }
 }

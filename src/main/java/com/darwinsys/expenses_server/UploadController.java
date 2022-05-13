@@ -38,7 +38,7 @@ public class UploadController {
 
 	@PutMapping("/expenses")
 	public ExpenseListWrapper upload(@RequestBody ExpenseListWrapper expenses) throws IOException {
-		expenses.getExpense().forEach(System.out::println);
+		expenses.getExpensesList().forEach(System.out::println);
 		ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(FILE));
 		os.writeObject(expenses);
 		os.close();
