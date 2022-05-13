@@ -31,6 +31,6 @@ public class ExpenseListWrapper implements Serializable {
     }
 
 	public String toString() {
-		return String.format("ExpenseListWrapper with %d Expenses", expense.size());
+		return String.format("ExpenseListWrapper with %d Expenses", expenses.size());
 	}
 }
