@@ -13,11 +13,11 @@ import java.util.List;
  *
  */
 public class ExpenseListWrapper implements Serializable {
-    List<Expense> expense; // Do not change to expenses; must match JSON name.
+    List<Expense> expenses;
 
     /** Construct this wrapper given a list of expenses */
     public ExpenseListWrapper(List<Expense> expenses) {
-        this.expense = expenses;
+        this.expenses = expenses;
     }
 
     /**
@@ -27,6 +27,10 @@ public class ExpenseListWrapper implements Serializable {
      */
     @JsonProperty("expense")
     public List<Expense> getExpensesList() {
-        return expense;
+        return expenses;
     }
+
+	public String toString() {
+		return String.format("ExpenseListWrapper with %d Expenses", expense.size());
+	}
 }
