@@ -11,7 +11,7 @@ public class PreSeedDataFile {
                 new Expense(987654321, "Breakfast", 12.50)
         );
         ExpenseListWrapper data = new ExpenseListWrapper(expenses);
-        ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream(ExpenseController.FILE));
+        ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream(ExpensesController.FILE));
         ois.writeObject(data);
         ois.close();
         System.out.println(ExpensesController.FILE.getAbsoluteFile() + " written OK");
