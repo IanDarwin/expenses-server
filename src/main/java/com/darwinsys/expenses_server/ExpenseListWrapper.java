@@ -21,6 +21,11 @@ public class ExpenseListWrapper implements Serializable {
         this.expenses = expenses;
     }
 
+    /** No-arg constructor needed for Jackson */
+    public ExpenseListWrapper() {
+	    // Empty
+    }
+
     /**
      * Return the list. Again, the stupid name is mandated by the structure of the old app.
      * @return The list of Expense items
@@ -30,7 +35,11 @@ public class ExpenseListWrapper implements Serializable {
         return expenses;
     }
 
-	public String toString() {
-		return String.format("ExpenseListWrapper with %d Expenses", expenses.size());
-	}
+    public void setExpensesList(List<Expense> expenses) {
+        this.expenses = expenses;
+    }
+
+    public String toString() {
+        return String.format("ExpenseListWrapper with %d Expenses", expenses.size());
+    }
 }
