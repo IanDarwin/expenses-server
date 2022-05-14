@@ -1,0 +1,10 @@
+= expenses-server
+
+This is *not* an Android project, nor is it a traditional Java Enterprise service.
+Spring Boot provides the ability to build tiny services like this, thanks to
+the Apache Tomcat project's "embeddable Tomcat". 
+
+This style of project would be quite suitable for use as a MicroService, given
+other infrastructure around it.
+
+To start it, you should only need to invoke the 'runserver' script.
