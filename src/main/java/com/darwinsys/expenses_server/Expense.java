@@ -1,6 +1,8 @@
 package com.darwinsys.expenses_server;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 /**
  * One expense item.
@@ -8,7 +10,7 @@ import java.io.Serializable;
 public class Expense implements Serializable {
     private static final long serialVersionUID = 832098432189L;
 
-    // expenseData should be a LocalDateTime not this rubbish, but
+    // expenseData should be a LocalDateTime, but
     // we have to be compatible with the old server.
     public long expenseDate;
     public String description;
@@ -18,5 +20,10 @@ public class Expense implements Serializable {
         this.expenseDate = expenseDate;
         this.description = description;
         this.amount = amount;
+    }
+
+    public String toString() {
+        return String.format("Expense['%s' on %s for %.2f]", description,
+                LocalDateTime.ofEpochSecond(expenseDate, 0, ZoneOffset.UTC), amount);
     }
 }
