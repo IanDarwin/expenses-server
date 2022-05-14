@@ -13,6 +13,7 @@ import java.util.List;
  *
  */
 public class ExpenseListWrapper implements Serializable {
+    private static final long serialVersionUID = 1234567890L;
     List<Expense> expenses;
 
     /** Construct this wrapper given a list of expenses */

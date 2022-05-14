@@ -6,6 +6,8 @@ import java.io.Serializable;
  * One expense item.
  */
 public class Expense implements Serializable {
+    private static final long serialVersionUID = 832098432189L;
+
     // expenseData should be a LocalDateTime not this rubbish, but
     // we have to be compatible with the old server.
     public long expenseDate;
