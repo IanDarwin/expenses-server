@@ -18,7 +18,8 @@ import java.util.List;
  * The JSON Format should look like this:
  * {"expense":[{"description":"Description0","amount":"10.1","expenseDate":"1303492691292"},{"description":"Description1"...
  *
- * @author Ian Darwin, based on earlier incantation from "LT 2771 Team"
+ * @author Ian Darwin, written from scratch to be compatible with
+ * an earlier incantation from "LT 2771 Team"
  */
 @RestController
 public class ExpensesController {
@@ -28,7 +29,13 @@ public class ExpensesController {
 
 	@GetMapping("/")
 	public String index() {
-		return "This is the Spring-based Upload server";
+		return "<h1>Welcome!</h1><p>This is the Spring-based <b>Upload server</p>"
+				+ "<p>There is no real user interface to this service; use REST!</p>";
+	}
+	
+	@GetMapping("/index.jsp")
+	public String compat() {
+		return index();
 	}
 
 	@GetMapping("/info")
@@ -48,8 +55,9 @@ public class ExpensesController {
 
 	@GetMapping("/expenses")
 	public ExpenseListWrapper download() throws IOException, ClassNotFoundException {
-		ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));
-		ExpenseListWrapper expenses = (ExpenseListWrapper) is.readObject();
-		return expenses;
+		try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));) {
+			ExpenseListWrapper expenses = (ExpenseListWrapper) is.readObject();
+			return expenses;
+		}
 	}
 }
