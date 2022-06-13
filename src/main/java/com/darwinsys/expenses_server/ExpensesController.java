@@ -26,16 +26,19 @@ public class ExpensesController {
 	final static String FILE_NAME = "expenses.ser";
 	final static File FILE = new File(FILE_NAME);
 
+	/** A simple HTML (well, plain) text confirmation that we're here */
 	@GetMapping("/")
 	public String index() {
 		return "This is the Spring-based Upload server";
 	}
 
+	/** Debugging info; NOT something you'd normally do on a real internet site! */
 	@GetMapping("/info")
 	public String mapping() {
 		return FILE.getAbsolutePath();
 	}
 
+	/** Upload some expenses */
 	@PostMapping("/expenses")
 	public ExpenseListWrapper upload(@RequestBody ExpenseListWrapper expenses) throws IOException {
 		System.out.println("Expenses Controller: Got " + expenses);
@@ -46,6 +49,7 @@ public class ExpensesController {
 		return expenses;
 	}
 
+	/** Echo the last-uploaded expenses, a very crude kind of confirmation */
 	@GetMapping("/expenses")
 	public ExpenseListWrapper download() throws IOException, ClassNotFoundException {
 		ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));
