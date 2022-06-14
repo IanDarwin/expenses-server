@@ -30,8 +30,8 @@ public class ExpensesController {
 	/** A simple HTML (well, plain) text confirmation that we're here */
 	@GetMapping("/")
 	public String index() {
-		return "<h1>Welcome!</h1><p>This is the Spring-based <b>Upload server</p>"
-				+ "<p>There is no real user interface to this service; use REST!</p>";
+		return "<h1>Welcome!</h1><p>This is the Spring-based <b>Upload server</b></p>"
+				+ "<p>There is no real user interface to this service; please use REST!</p>";
 	}
 	
 	@GetMapping("/index.jsp")
