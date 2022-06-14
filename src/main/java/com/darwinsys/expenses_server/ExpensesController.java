@@ -18,7 +18,8 @@ import java.util.List;
  * The JSON Format should look like this:
  * {"expense":[{"description":"Description0","amount":"10.1","expenseDate":"1303492691292"},{"description":"Description1"...
  *
- * @author Ian Darwin, based on earlier incantation from "LT 2771 Team"
+ * @author Ian Darwin, written from scratch to be compatible with
+ * an earlier incantation from "LT 2771 Team"
  */
 @RestController
 public class ExpensesController {
@@ -26,16 +27,25 @@ public class ExpensesController {
 	final static String FILE_NAME = "expenses.ser";
 	final static File FILE = new File(FILE_NAME);
 
+	/** A simple HTML (well, plain) text confirmation that we're here */
 	@GetMapping("/")
 	public String index() {
-		return "This is the Spring-based Upload server";
+		return "<h1>Welcome!</h1><p>This is the Spring-based <b>Upload server</p>"
+				+ "<p>There is no real user interface to this service; use REST!</p>";
+	}
+	
+	@GetMapping("/index.jsp")
+	public String compat() {
+		return index();
 	}
 
+	/** Debugging info; NOT something you'd normally do on a real internet site! */
 	@GetMapping("/info")
 	public String mapping() {
 		return FILE.getAbsolutePath();
 	}
 
+	/** Upload some expenses */
 	@PostMapping("/expenses")
 	public ExpenseListWrapper upload(@RequestBody ExpenseListWrapper expenses) throws IOException {
 		System.out.println("Expenses Controller: Got " + expenses);
@@ -46,10 +56,12 @@ public class ExpensesController {
 		return expenses;
 	}
 
+	/** Echo the last-uploaded expenses, a very crude kind of confirmation */
 	@GetMapping("/expenses")
 	public ExpenseListWrapper download() throws IOException, ClassNotFoundException {
-		ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));
-		ExpenseListWrapper expenses = (ExpenseListWrapper) is.readObject();
-		return expenses;
+		try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));) {
+			ExpenseListWrapper expenses = (ExpenseListWrapper) is.readObject();
+			return expenses;
+		}
 	}
 }
