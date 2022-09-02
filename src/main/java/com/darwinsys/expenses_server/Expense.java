@@ -22,6 +22,10 @@ public class Expense implements Serializable {
         this.amount = amount;
     }
 
+    public Expense() {
+        // Empty, needed for Jackson
+    }
+
     public String toString() {
         return String.format("Expense['%s' on %s for %.2f]", description,
                 LocalDateTime.ofEpochSecond(expenseDate, 0, ZoneOffset.UTC), amount);

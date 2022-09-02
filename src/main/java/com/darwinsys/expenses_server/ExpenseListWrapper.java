@@ -1,5 +1,6 @@
 package com.darwinsys.expenses_server;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
@@ -9,7 +10,8 @@ import java.util.List;
  * Needed because The JSON Format should look like this:
  * {"expense":[
  *   {"description":"Description0","amount":"10.1","expenseDate":"1303492691292"},
- *   {"description":"Description1"...
+ *   {"description":"Description1"...}
+ * ]}
  *
  */
 public class ExpenseListWrapper implements Serializable {
