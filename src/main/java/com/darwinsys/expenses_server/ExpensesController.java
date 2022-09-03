@@ -1,9 +1,6 @@
 package com.darwinsys.expenses_server;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -47,6 +44,7 @@ public class ExpensesController {
 
 	/** Upload some expenses */
 	@PostMapping("/expenses")
+	@ResponseBody
 	public ExpenseListWrapper upload(@RequestBody ExpenseListWrapper expenses) throws IOException {
 		System.out.println("Expenses Controller: Got " + expenses);
 		expenses.getExpensesList().forEach(System.out::println);
