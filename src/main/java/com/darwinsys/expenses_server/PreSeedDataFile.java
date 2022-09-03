@@ -4,6 +4,10 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
+/**
+ * This will OVERWRITE the datafile with the entries in "expenses" below.
+ * Good for initial setup and testing; not much else.
+ */
 public class PreSeedDataFile {
     public static void main(String[] args) throws Exception {
         List<Expense> expenses = List.of(
