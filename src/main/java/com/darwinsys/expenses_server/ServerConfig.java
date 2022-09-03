@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
 
 @Component
+@SuppressWarnings("unused")
 public class ServerConfig {
 
         @Bean
+        @SuppressWarnings("unused")
         public ServletWebServerFactory servletContainer(@Value("${server.http.port}") int httpPort) {
             Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
             connector.setPort(httpPort);

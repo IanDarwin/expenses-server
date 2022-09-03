@@ -1,17 +1,14 @@
 package com.darwinsys.expenses_server;
 
-import org.springframework.web.bind.annotation.*;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
+
+import org.springframework.web.bind.annotation.*;
 
 /**
  * A simple REST / JSON server which accepts a POST containing an array of Expenses and stores them on the local file system
  * The URL for the POST is expected to be /expenses
  * The same array can then be retrieved via GET /expenses
- *
+ * <br/>
  * The JSON Format should look like this:
  * {"expense":[{"description":"Description0","amount":"10.1","expenseDate":"1303492691292"},{"description":"Description1"...
  *
@@ -32,7 +29,7 @@ public class ExpensesController {
 	}
 	
 	@GetMapping("/index.jsp")
-	public String compat() {
+	public String compatibility() {
 		return index();
 	}
 
@@ -57,9 +54,8 @@ public class ExpensesController {
 	/** Echo the last-uploaded expenses, a very crude kind of confirmation */
 	@GetMapping("/expenses")
 	public ExpenseListWrapper download() throws IOException, ClassNotFoundException {
-		try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE));) {
-			ExpenseListWrapper expenses = (ExpenseListWrapper) is.readObject();
-			return expenses;
+		try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE))) {
+			return (ExpenseListWrapper) is.readObject();
 		}
 	}
 }

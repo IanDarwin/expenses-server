@@ -1,10 +1,10 @@
 package com.darwinsys.expenses_server;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Needed because The JSON Format should look like this:
@@ -15,6 +15,7 @@ import java.util.List;
  *
  */
 public class ExpenseListWrapper implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1234567890L;
     List<Expense> expenses;
 
@@ -24,6 +25,7 @@ public class ExpenseListWrapper implements Serializable {
     }
 
     /** No-arg constructor needed for Jackson */
+    @SuppressWarnings("unused")
     public ExpenseListWrapper() {
 	    // Empty
     }
@@ -37,6 +39,7 @@ public class ExpenseListWrapper implements Serializable {
         return expenses;
     }
 
+    @SuppressWarnings("unused")
     public void setExpensesList(List<Expense> expenses) {
         this.expenses = expenses;
     }

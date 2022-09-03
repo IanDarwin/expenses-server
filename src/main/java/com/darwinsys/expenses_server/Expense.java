@@ -1,5 +1,6 @@
 package com.darwinsys.expenses_server;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -8,6 +9,7 @@ import java.time.ZoneOffset;
  * One expense item.
  */
 public class Expense implements Serializable {
+    @Serial
     private static final long serialVersionUID = 832098432189L;
 
     // expenseData should be a LocalDateTime, but
@@ -22,6 +24,7 @@ public class Expense implements Serializable {
         this.amount = amount;
     }
 
+    @SuppressWarnings("unused")
     public Expense() {
         // Empty, needed for Jackson
     }
