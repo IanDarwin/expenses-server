@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 /**
- * This will OVERWRITE the datafile with the entries in "expenses" below.
+ * This will OVERWRITE the datafile on the server side with the entries in "expenses" below.
  * Good for initial setup and testing; not much else.
  */
 public class PreSeedDataFile {
