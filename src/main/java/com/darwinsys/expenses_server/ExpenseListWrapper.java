@@ -7,7 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Needed because The JSON Format should look like this:
+ * Needed because The JSON Format should look like this, to be more self-identifying:
  * {"expense":[
  *   {"description":"Description0","amount":"10.1","expenseDate":"1303492691292"},
  *   {"description":"Description1"...}
