@@ -1,6 +1,7 @@
 package com.darwinsys.expenses_server;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
@@ -11,12 +12,17 @@ import java.util.List;
 public class PreSeedDataFile {
     public static void main(String[] args) throws Exception {
         List<Expense> expenses = List.of(
-                new Expense(123456789, "Dinner", 42.50),
-                new Expense(987654321, "Breakfast", 12.50)
+                new Expense(1673275262, "Dinner", "Tasty Takeout", 12.50),
+                new Expense(1674075262, "Breakfast", "Testy Tiffany's", 42.50)
         );
-        ExpenseListWrapper data = new ExpenseListWrapper(expenses);
         ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream(ExpensesController.FILE));
-        ois.writeObject(data);
+        expenses.forEach(data -> {
+            try {
+                ois.writeObject(data);
+            } catch (IOException e) {
+                throw new RuntimeException("Writing failed!!" + e, e);
+            }
+        });
         ois.close();
         System.out.println(ExpensesController.FILE.getAbsoluteFile() + " written OK");
     }
