@@ -69,8 +69,8 @@ public class ExpensesController {
 	public ExpenseListWrapper addMultiple(@RequestBody ExpenseListWrapper expenses) throws IOException, ClassNotFoundException {
 		System.out.println("Expenses Controller: Got " + expenses);
 		boolean append = FILE.exists(); // if file exists then append, otherwise create new
-		FileOutputStream fout = new FileOutputStream(FILE, append);
-		AppendableObjectOutputStream objectOutput = new AppendableObjectOutputStream(fout, append);
+		FileOutputStream fOut = new FileOutputStream(FILE, append);
+		AppendableObjectOutputStream objectOutput = new AppendableObjectOutputStream(fOut, append);
 		for (Expense expense : expenses.getExpensesList()) {
 			ensureHasPkey(expense);
 			System.out.println("Saving expense item " + expense);
