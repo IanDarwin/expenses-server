@@ -48,7 +48,7 @@ public class ExpensesController {
 	/** Upload ONE expense item.
 	 * @return Just the primary key of the new entry.
 	 */
-	@PostMapping("/add-expense")
+	@PostMapping(value="/add-expense", consumes="application/json")
 	public long addOneExpense(@RequestBody Expense expense) throws IOException {
 		System.out.println("Add: " + expense);
 		boolean append = FILE.exists(); // if file exists then append, otherwise create new
@@ -87,7 +87,7 @@ public class ExpensesController {
 	}
 
 	/** Echo the last-uploaded expenses, a very crude kind of confirmation */
-	@GetMapping("/expenses")
+	@GetMapping(value="/expenses", produces="application/json")
 	public ExpenseListWrapper listAll() throws ClassNotFoundException {
 		List<Expense> all = innerListAll();
 		return new ExpenseListWrapper(all);
