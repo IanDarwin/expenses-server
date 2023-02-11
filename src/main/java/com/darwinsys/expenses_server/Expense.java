@@ -37,7 +37,7 @@ public class Expense implements Serializable {
         this.amount = amount;
     }
 
-    /** This is the constructor when you don't have a prinary key yet, as for new Expense items */
+    /** This is the constructor when you don't have a primary key yet, as for new Expense items */
     public Expense(long expenseDate, String description, String location, double amount) {
         this(0, expenseDate, description, location, amount);
     }

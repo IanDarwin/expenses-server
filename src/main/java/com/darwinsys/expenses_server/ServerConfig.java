@@ -16,7 +16,7 @@ public class ServerConfig {
         public ServletWebServerFactory servletContainer(@Value("${server.http.port}") int httpPort) {
             Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
             connector.setPort(httpPort);
-            System.out.println("ServletWebServerVactory: added port = " + httpPort);
+            System.out.println("ServletWebServerFactory: added port = " + httpPort);
             TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
             tomcat.addAdditionalTomcatConnectors(connector);
             return tomcat;
